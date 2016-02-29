@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Listings</string>
+    <string name="screen1_name">Listings</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_result">Listing Information</string>
+    <string name="listings_info_button">Show Listing Info</string>
+</resources>
