@@ -30,15 +30,6 @@ public class ResultActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-       /* FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });*/
-
         Intent intent = getIntent();
         String yelpUrl = intent.getStringExtra("yelp_url");
         String opentableUrl = intent.getStringExtra("opentable_url");
@@ -47,7 +38,6 @@ public class ResultActivity extends AppCompatActivity {
 
     private class MyAsyncTask extends AsyncTask<String, String, String> {
         TextView txtView;
-        String title;
         String message = "";
         protected void onPreExecute() {
             txtView = (TextView) findViewById(R.id.resultTextView);
@@ -57,7 +47,7 @@ public class ResultActivity extends AppCompatActivity {
 
             try {
                 for(String url: strings){
-                    Document doc = Jsoup.connect(url).get();
+                    Document doc = Jsoup.connect(url).get(); //connecting to external site
                     if(url.contains("yelp.com")){
                         Entity entity =  SourceScraping.scrapeYelp(doc);
                         message = message + getListingsString("yelp", entity);
